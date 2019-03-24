@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+<form action="" enctype="multipart/form-data">
+    <input type="file" name="file" id="upload" size="20"/>
+    <img src="">
+</form>
+</body>
+
+<!--引用线上jq库-->
+<script src="http://res.ismallpig.com/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#upload').change(function () {
+        var file = $("#upload")[0].files[0]; //打印file 为对象
+        var formObj = new FormData();
+        formObj.set('file', file);
+        $.ajax({
+            //线上的文件或者图片上传地址
+            url: 'http://xiaozhuang.ymxlh.com/api/uploads/uploadsfile',
+            // url:'./index.php',
+            data: formObj,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                //转换json 将返回图片路径添加到img标签显示
+                console.log(res);
+            },
+            fail: function (res) {
+                console.log("11");
+            }
+        });
+    })
+</script>
+
+</html>

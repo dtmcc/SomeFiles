@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery上传图片本地预览效果</title>
+</head>
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<input id="upload" type="file">
+<br>
+<img id="preview" src="http://res.ismallpig.com/public/images/white.png" style="width: 300px;height: 300px;">
+<script type="text/javascript">
+    $('#upload').change(function () {
+        // 获取FileList的第一个元素
+        // alert(document.getElementById('upload').files[0]);
+        var f = document.getElementById('upload').files[0];
+        console.log(f);
+        src = window.URL.createObjectURL(f);
+        document.getElementById('preview').src = src
+    })
+</script>
+</body>
+</html>
